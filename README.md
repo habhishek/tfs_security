@@ -3,6 +3,7 @@
 https://github.com/microsoft/azure-devops-python-api
 
 Readme on this repo gives some idea for connecting the appropriate client and hence deserves a quick glance :).
+PAT token is required for client connection. Create a PAT token from the tfs collection as required. [Reference](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)
 
 # Explore TFS Security from backend SQL Server using T-SQL
 
