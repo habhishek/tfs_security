@@ -29,14 +29,14 @@ PAT token is required for client connection. Create a PAT token from the tfs col
 * View test runs
 
 **Find bits in tbl_SecurityAction**
-```
+```SQL
 :connect TFSGFS4LN
 Use [Tfs_GFS Service Mgmt]
 select *  from tbl_SecurityAction
 where NamespaceId = '52D39943-CB85-4D7F-8FA8-C6BAAC873819'
 ```
 **OR to find the set bit value for Deny permission**
-```
+```SQL
 :connect TFSGFS4LN
 Use [Tfs_GFS Service Mgmt]
 select sum(Bit)  from tbl_SecurityAction
@@ -46,34 +46,34 @@ DisplayName in ('Bypass rules on work item updates','Change process of team proj
 ```
 
 **Some More**
-```
+```SQL
 select * from tbl_SecurityAccessControlEntry 
 where NamespaceGuid='52D39943-CB85-4D7F-8FA8-C6BAAC873819' and SecurityToken = '$PROJECT:vstfs:///Classification/TeamProject/d5ca8447-9e11-479e-b6da-4aa00231bea9:'
 ```
 
-```
+```SQL
 select sum(Bit)  from tbl_SecurityAction
 where NamespaceId = '52D39943-CB85-4D7F-8FA8-C6BAAC873819' and 
 DisplayName in ('Bypass rules on work item updates','Change process of team project.','Create tag definition','Create test runs','Delete and restore work items','Delete team project','Delete test runs','Edit project-level information','Manage project properties','Manage test configurations','Manage test environments','Permanently delete work items','Rename team project','Suppress notifications for work item updates','Update project visibility')
 ```
 
-```
+```SQL
 select * from tbl_SecurityTokenDelta 
 order by ChangeDate desc
 ```
 
-```
+```SQL
 SELECT [ProjectUri]
 FROM [Tfs_GFS Service Mgmt].[dbo].[tbl_Project]
 where projectname='GFS-CSIPRM'
 --vstfs:///Classification/TeamProject/d5ca8447-9e11-479e-b6da-4aa00231bea9
 ```
-```
+```SQL
 SELECT *
 FROM [Tfs_GFS Service Mgmt].[dbo].[tbl_Area]
 Where ProjectUri = 'vstfs:///Classification/TeamProject/d5ca8447-9e11-479e-b6da-4aa00231bea9'
 ```
-```
+```SQL
 Project URI - 
 SELECT [ProjectUri]
 FROM [Tfs_GFS Service Mgmt].[dbo].[tbl_Project]
@@ -82,7 +82,7 @@ where projectname='GFS-CSIPRM'
 --vstfs:///Classification/TeamProject/d5ca8447-9e11-479e-b6da-4aa00231bea9
 ```
 Can be validated by checking the entry for the tfs  project(uri - vstfs:///Classification/TeamProject/d5ca8447-9e11-479e-b6da-4aa00231bea9 ) and namespace(Project - 52D39943-CB85-4D7F-8FA8-C6BAAC873819)
-```
+```SQL
 select * from tbl_SecurityAccessControlEntry 
 where denypermission > 0 and NamespaceGuid='52D39943-CB85-4D7F-8FA8-C6BAAC873819' and SecurityToken = '$PROJECT:vstfs:///Classification/TeamProject/d5ca8447-9e11-479e-b6da-4aa00231bea9:'
 ```
